@@ -7,6 +7,6 @@ import retrofit2.http.GET
 interface CurrencyApi {
 
     @GET("/daily_json.js")
-    fun getAllPosts(): Call<CurrencyModel>?
+    fun getAllPosts(): Call<CurrencyResponse>?
 
 }

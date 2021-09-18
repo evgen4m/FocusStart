@@ -4,17 +4,17 @@ import com.google.gson.annotations.SerializedName
 
 data class CurrencyModel(
     @SerializedName("ID")
-    val id: Int,
+    val id: String,
     @SerializedName("NumCode")
     val numCode: String,
     @SerializedName("CharCode")
     val charCode: String,
     @SerializedName("Nominal")
-    val nominal: String,
+    val nominal: Float,
     @SerializedName("Name")
     val name: String,
     @SerializedName("Value")
-    val value: Double,
+    val value: Float,
     @SerializedName("Previous")
-    val previous: Double
+    val previous: Float
 )

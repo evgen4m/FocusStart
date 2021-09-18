@@ -7,4 +7,6 @@ interface ListCurrencyView: BaseView {
 
     fun onScreenResumed(list: List<CurrencyModel>)
 
+    fun openConvertScreen(id: String)
+
 }

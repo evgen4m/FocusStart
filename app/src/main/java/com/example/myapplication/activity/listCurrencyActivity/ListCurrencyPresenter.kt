@@ -1,6 +1,7 @@
 package com.example.myapplication.activity.listCurrencyActivity
 
 import com.example.myapplication.base.BasePresenter
+import com.example.myapplication.model.CurrencyModel
 import com.example.myapplication.model.CurrencyRepository
 
 class ListCurrencyPresenter(private val repository: CurrencyRepository): BasePresenter<ListCurrencyView>() {
@@ -8,8 +9,11 @@ class ListCurrencyPresenter(private val repository: CurrencyRepository): BasePre
     fun onResume() {
         repository.getAll {
             view?.onScreenResumed(it)
-            println(it)
         }
+    }
+
+    fun openConvertScreen(currencyModel: CurrencyModel) {
+        view?.openConvertScreen(id = currencyModel.id)
     }
 
 }

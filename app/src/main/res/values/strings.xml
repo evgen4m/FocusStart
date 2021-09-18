@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">FocusStart</string>
+    <string name="info_rus">Количество 1 рубля</string>
+    <string name="info_currency">Информация о валюте</string>
+    <string name="currency">Валюта</string>
+    <string name="get_rus_rub">Введите количество рублей</string>
 </resources>

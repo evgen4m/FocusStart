@@ -5,15 +5,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.myapplication.Helper
 import com.example.myapplication.R
 import com.example.myapplication.databinding.CurrencyListItemBinding
 import com.example.myapplication.model.CurrencyModel
 
-class CurrencyListAdapter: RecyclerView.Adapter<CurrencyListAdapter.ViewHolder>() {
+class CurrencyListAdapter(private val onItemClick: (CurrencyModel) -> Unit): RecyclerView.Adapter<CurrencyListAdapter.ViewHolder>() {
 
     private lateinit var context: Context
 
-    var listItems = ArrayList<CurrencyModel>()
+    private var listItems = ArrayList<CurrencyModel>()
     set(value) {
         field = value
         notifyDataSetChanged()
@@ -36,15 +37,21 @@ class CurrencyListAdapter: RecyclerView.Adapter<CurrencyListAdapter.ViewHolder>(
     override fun getItemCount(): Int = listItems.size
 
 
-    class ViewHolder(view: View): RecyclerView.ViewHolder(view) {
+    inner class ViewHolder(view: View): RecyclerView.ViewHolder(view) {
         val binding = CurrencyListItemBinding.bind(view)
         fun bind(model: CurrencyModel) {
             binding.apply {
                 currencyName.text = model.name
                 currencyChar.text = model.charCode
                 currencyValue.text = model.value.toString()
-
             }
+
+            itemView.setOnClickListener {
+                onItemClick(model)
+            }
+
+            Helper().getFlagFromCode(view = binding.currencyImage, charCode = model.charCode)
+
         }
     }
 
