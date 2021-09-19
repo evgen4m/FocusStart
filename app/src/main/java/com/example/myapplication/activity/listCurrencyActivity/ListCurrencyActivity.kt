@@ -53,7 +53,9 @@ class ListCurrencyActivity : AppCompatActivity(), ListCurrencyView {
 
     inner class Task: TimerTask() {
         override fun run() {
-            presenter.getAllCurrency()
+            runOnUiThread {
+                presenter.getAllCurrency()
+            }
         }
     }
 }
