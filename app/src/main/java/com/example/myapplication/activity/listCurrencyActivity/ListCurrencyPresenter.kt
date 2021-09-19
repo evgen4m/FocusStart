@@ -6,9 +6,9 @@ import com.example.myapplication.model.CurrencyRepository
 
 class ListCurrencyPresenter(private val repository: CurrencyRepository): BasePresenter<ListCurrencyView>() {
 
-    fun onResume() {
+    fun getAllCurrency() {
         repository.getAll {
-            view?.onScreenResumed(it)
+            view?.getCurrencyList(it)
         }
     }
 

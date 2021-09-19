@@ -5,7 +5,7 @@ import com.example.myapplication.model.CurrencyModel
 
 interface ListCurrencyView: BaseView {
 
-    fun onScreenResumed(list: List<CurrencyModel>)
+    fun getCurrencyList(list: List<CurrencyModel>)
 
     fun openConvertScreen(id: String)
 

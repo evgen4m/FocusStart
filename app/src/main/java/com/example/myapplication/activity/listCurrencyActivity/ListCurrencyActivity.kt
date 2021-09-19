@@ -2,7 +2,6 @@ package com.example.myapplication.activity.listCurrencyActivity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.myapplication.activity.converterActivity.ConverterActivity
 import com.example.myapplication.app.App
@@ -44,7 +43,7 @@ class ListCurrencyActivity : AppCompatActivity(), ListCurrencyView {
 
     }
 
-    override fun onScreenResumed(list: List<CurrencyModel>) {
+    override fun getCurrencyList(list: List<CurrencyModel>) {
         currencyAdapter.updateList(list)
     }
 
@@ -54,7 +53,7 @@ class ListCurrencyActivity : AppCompatActivity(), ListCurrencyView {
 
     inner class Task: TimerTask() {
         override fun run() {
-            presenter.onResume()
+            presenter.getAllCurrency()
         }
     }
 }
