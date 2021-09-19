@@ -2,7 +2,11 @@ package com.example.myapplication.activity.listCurrencyActivity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.inputmethod.EditorInfo
+import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.myapplication.R
 import com.example.myapplication.activity.converterActivity.ConverterActivity
 import com.example.myapplication.app.App
 import com.example.myapplication.databinding.ActivityMainBinding
@@ -49,6 +53,23 @@ class ListCurrencyActivity : AppCompatActivity(), ListCurrencyView {
 
     override fun openConvertScreen(id: String) {
         ConverterActivity.start(this, id)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.main_menu, menu)
+        val searchItem = menu?.findItem(R.id.searchNote)
+        val searchView = searchItem?.actionView as SearchView
+        searchView.imeOptions = EditorInfo.IME_ACTION_DONE
+        searchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+            override fun onQueryTextChange(newText: String?): Boolean {
+                currencyAdapter.filter.filter(newText)
+                return false
+            }
+        })
+        return super.onCreateOptionsMenu(menu)
     }
 
     inner class Task: TimerTask() {
